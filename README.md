@@ -5,8 +5,16 @@
 
 ## 1. 아토믹 코틀린 정리
 
-<image width=300 src="https://github.com/KoorunG/kotlin-playground/assets/83933192/7c7b430a-39a3-4026-8f87-248f2b1d83b6"></image>
+<image width=400 src="https://github.com/KoorunG/kotlin-playground/assets/83933192/7c7b430a-39a3-4026-8f87-248f2b1d83b6"></image>
 
-[아토믹코틀린](https://www.yes24.com/Product/Goods/117817486) 책을 읽고 정리한 내용
 
-`>>` [링크](src/test/kotlin/com/koorung/kotlinplayground/atomickotlin/README.md)
+[아토믹 코틀린](src/test/kotlin/com/koorung/kotlinplayground/atomickotlin/README.md)
+
+<br/>
+<br/>
+
+## 2. 인프런 - 코틀린 고급편 강의내용 정리
+
+<image width=400 alt="image" src="https://github.com/KoorunG/kotlin-playground/assets/83933192/d68636c2-a782-4e07-9d6e-12d051086115"></image>
+
+[인프런 - 코틀린 고급편](src/test/kotlin/com/koorung/kotlinplayground/advancedkotlin/README.md)
