@@ -1,6 +1,6 @@
 # 코틀린 고급편 강의내용 정리
 
-[인프런 강의 - 코틀린 고급편 (김대현)](https://www.inflearn.com/course/lecture?courseSlug=%EC%BD%94%ED%8B%80%EB%A6%B0-%EA%B3%A0%EA%B8%89%ED%8E%B8&unitId=165573)
+[인프런 강의 - 코틀린 고급편 (김대현)](https://www.inflearn.com/course/%EC%BD%94%ED%8B%80%EB%A6%B0-%EA%B3%A0%EA%B8%89%ED%8E%B8/dashboard)
 
 ### Section1 : 제네릭클래스, 함수 활용법
  
