@@ -73,3 +73,41 @@ fun handleCacheStore(store: Map<PersonDtoKey, MutableList<PersonDto>>) {}
 // 2. 파라미터를 깔끔하게 정리하는 것이 가능하다!
 fun handleCacheStore(store: PersonDtoStore) {}
 ```
+
+---
+
+### Section2 : 코틀린의 지연과 위임 처리
+
+
+#### 1. lateinit 키워드
+* 코틀린에서는 `lateinit` 키워드를 이용하여 인스턴스화 시점과 변수 초기화 시점을 분리할 수 있다.
+* 즉, 일단 인스턴스를 생성하는것은 가능하지만 초기화하지 않으면 예외가 발생하는 객체를 만들 수 있다..!
+```kotlin
+class Person {
+    lateinit var name: String
+}
+
+val person = Person()
+
+println(person.name) // name 프로퍼티가 초기화되지 않았으므로 UninitializedPropertyAccessException 발생..!
+
+val initPerson = person.apply { this.name = "이재학" }
+println(initPerson)  // "이재학"
+```
+
+#### 2. by lazy 키워드
+* val 프로퍼티에 `by lazy` + `람다` 를 이용하여 <br/>
+**해당 프로퍼티의 getter가 최초 호출될 때만** 로직이 실행되도록 할 수 있다.
+```kotlin
+class Person {
+    val name: String by lazy {
+        Thread.sleep(2_000)
+        "디폴트네임"
+    }
+    val age: Int = 0
+}
+
+val person = Person()
+println(person.name)  // 2초후 "디폴트네임"
+println(person.age)   // 즉시 "0"
+```
