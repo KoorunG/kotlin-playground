@@ -18,3 +18,12 @@
 <image width=400 alt="image" src="https://github.com/KoorunG/kotlin-playground/assets/83933192/d68636c2-a782-4e07-9d6e-12d051086115"></image>
 
 [인프런 - 코틀린 고급편](src/test/kotlin/com/koorung/kotlinplayground/advancedkotlin/README.md)
+
+<br/>
+<br/>
+
+## 3. 인프런 - 코틀린 코루틴 강의내용 정리
+
+![img.png](img.png)
+
+[인프런 - 코틀린 코루틴](src/test/kotlin/com/koorung/kotlinplayground/coroutine/README.md)
