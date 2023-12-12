@@ -132,4 +132,68 @@ class CoroutineTests {
             println("measureTimeMills ::: $measureTimeMillis ms")
         }
     }
+
+    @Test
+    fun `코루틴을 취소하는 방법1 - suspend 함수를 사용한다`(){
+        runBlocking {
+            val job1 = launch {
+                // delay나 yield는 suspend 함수이므로 코루틴의 취소에 협조할 수 있다.
+//                delay(1_000L)   // 주석처리하면 job1은 취소되지 않음
+                printWithThread("JOB 1")
+            }
+            val job2 = launch {
+                delay(1_000L)
+                printWithThread("JOB 2")
+            }
+
+            delay(100)
+            job1.cancel()
+            job2.cancel()
+        }
+    }
+
+    @Test
+    fun `코루틴을 취소하는 방법2 - 취소 요청을 받으면 CancellationException을 던진다`(){
+        runBlocking {
+            // 1. Default라는 다른 쓰레드에서 job을 실행
+            printWithThread("job을 실행합니다..")
+            val job = launch(Dispatchers.Default) {
+                var i = 1
+                var nextPrintTime = System.currentTimeMillis()
+                while (i <= 5) {
+                    if (nextPrintTime <= System.currentTimeMillis()) {
+                        printWithThread("${i++} 번째 출력!")
+                        nextPrintTime += 500L
+                    }
+
+                    // CoroutineScope.isActive 프로퍼티로 코루틴은 스스로의 상태를 확인할 수 있다!
+                    // 취소요청을 받았다면 "isActive == false"
+                    // 비활성화 상태라면 CancellationException 예외 던지기!
+                    if (!isActive) throw CancellationException()
+                }
+            }
+
+            delay(100)
+
+            // main (여기서는 testworker) 쓰레드에서 예외를 감지하여 job을 취소시킨다
+            job.cancel()
+        }
+    }
+
+    @Test
+    fun `delay나 yield 함수도 내부적으로 CancellationException으로 취소에 협력한다`(){
+        runBlocking {
+            val job = launch {
+                try {
+                    delay(1000L)
+                } catch (e: CancellationException) {
+                    // 예외를 먹어버리면
+                }
+                printWithThread("취소되지 않았음...")
+            }
+            delay(100)
+            printWithThread("취소 시작!")
+            job.cancel()
+        }
+    }
 }
