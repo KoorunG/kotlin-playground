@@ -1,6 +1,7 @@
 package com.koorung.kotlinplayground.coroutine.section1
 
 import kotlinx.coroutines.*
+import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
 import kotlin.system.measureTimeMillis
 
@@ -194,6 +195,87 @@ class CoroutineTests {
             delay(100)
             printWithThread("취소 시작!")
             job.cancel()
+        }
+    }
+
+    @Test
+    fun `launch를 root 코루틴으로 만들기`() = runBlocking {
+        val job = CoroutineScope(Dispatchers.Default).launch {
+            printWithThread("Default thread :: launch")
+        }
+
+        delay(timeMillis = 1_000L)
+    }
+
+    @Test
+    fun `launch 블록은 블록의 결과를 바로 출력한다`(){
+        runBlocking {
+            CoroutineScope(Dispatchers.Default).launch {
+//                throw IllegalArgumentException()
+            }
+
+            delay(timeMillis = 1_000L)
+        }
+    }
+
+    @Test
+    fun `async 블록은 결과를 바로 출력하지 않는다`(){
+        runBlocking {
+            val async = CoroutineScope(Dispatchers.Default).async {
+                throw IllegalArgumentException()
+            }
+
+            delay(timeMillis = 1_000L)
+            // .await() 으로 호출되어야 예외가 발생한다.
+//            async.await()
+        }
+    }
+
+    @Test
+    fun `async 블록은 블록의 결과를 일단 deferred 객체에 담아둔다`(){
+        runBlocking {
+            // 그러나 SupervisorJob()으로 등록하면 전파되지 않는다
+            val async = async(SupervisorJob()) {
+                throw IllegalArgumentException()
+            }
+
+            delay(timeMillis = 1_000L)
+
+            // 역시 .await() 으로 호출하면 예외가 발생한다.
+//            async.await()
+        }
+    }
+
+    @Test
+    fun `자식 코루틴의 예외는 CancellationException을 제외하고 기본적으로 부모에게 전파된다`(){
+        runBlocking {
+            launch {
+                throw CancellationException()   // 정상동작
+//                throw IllegalArgumentException() // 에러가 발생함
+            }
+
+            delay(timeMillis = 100L)
+        }
+    }
+
+    @Test
+    fun `CoroutineExceptionHandler으로 예외가 발생한 이후 예외를 다룰 수 있다`(){
+        runBlocking {
+            // 2. 예외가 발생한 이후 로깅처리
+            val exceptionHandler = CoroutineExceptionHandler { context, throwable ->
+                printWithThread("예외처리")
+                // 첫번째 파라미터: 핸들러가 처리되는 context
+                printWithThread("context ::: $context")
+                // 두번째 파라미터: 예외
+//                throw throwable
+            }
+
+            // 1. CoroutineExceptionHandler을 context로 등록한다
+            CoroutineScope(Dispatchers.Default).launch(context = exceptionHandler) {
+                throw IllegalArgumentException()
+            }
+
+            delay(100L)
         }
     }
 }
