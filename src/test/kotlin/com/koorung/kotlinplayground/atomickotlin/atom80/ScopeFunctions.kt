@@ -1,10 +1,7 @@
 package com.koorung.kotlinplayground.atomickotlin.atom80
 
 import com.koorung.kotlinplayground.atomickotlin.atom80.KotlinScope.*
-import org.assertj.core.api.Assertions
-import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertThrows
 import kotlin.random.Random
 
 // 코틀린의 영역함수

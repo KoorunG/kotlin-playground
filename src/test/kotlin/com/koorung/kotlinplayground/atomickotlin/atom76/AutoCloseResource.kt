@@ -1,9 +1,6 @@
 package com.koorung.kotlinplayground.atomickotlin.atom76
 
 import org.junit.jupiter.api.Test
-import java.io.BufferedReader
-import java.io.File
-import java.io.FileInputStream
 
 /**
  * 자바의 try with resource 구문과 같이

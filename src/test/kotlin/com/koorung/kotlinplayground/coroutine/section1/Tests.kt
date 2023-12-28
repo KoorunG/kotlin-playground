@@ -1,7 +1,6 @@
 package com.koorung.kotlinplayground.coroutine.section1
 
 import kotlinx.coroutines.*
-import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
 import kotlin.system.measureTimeMillis
 

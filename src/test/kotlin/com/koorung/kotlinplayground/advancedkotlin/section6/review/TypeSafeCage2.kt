@@ -1,12 +1,9 @@
 package com.koorung.kotlinplayground.advancedkotlin.section6.review
 
 import com.koorung.kotlinplayground.advancedkotlin.section6.typesafe.GoldFish
-import net.bytebuddy.implementation.bind.annotation.Super
-import org.assertj.core.api.Assertions
-import org.assertj.core.api.Assertions.*
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import kotlin.reflect.KClass
-import kotlin.reflect.KType
 import kotlin.reflect.cast
 
 class TypeSafeCage2 {

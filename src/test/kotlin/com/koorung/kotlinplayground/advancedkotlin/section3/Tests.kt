@@ -1,8 +1,7 @@
 package com.koorung.kotlinplayground.advancedkotlin.section3
 
 import com.koorung.kotlinplayground.advancedkotlin.section3.Operator.*
-import org.assertj.core.api.Assertions
-import org.assertj.core.api.Assertions.*
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 

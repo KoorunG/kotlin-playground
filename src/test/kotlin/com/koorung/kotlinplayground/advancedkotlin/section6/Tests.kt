@@ -10,8 +10,7 @@ import com.koorung.kotlinplayground.advancedkotlin.section6.service.Services
 import com.koorung.kotlinplayground.advancedkotlin.section6.typesafe.Carp
 import com.koorung.kotlinplayground.advancedkotlin.section6.typesafe.GoldFish
 import com.koorung.kotlinplayground.advancedkotlin.section6.typesafe.TypeSafeCage
-import org.assertj.core.api.Assertions
-import org.assertj.core.api.Assertions.*
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 class Tests {

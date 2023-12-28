@@ -1,6 +1,6 @@
 package com.koorung.kotlinplayground.atomickotlin.atom79
 
-import org.assertj.core.api.Assertions.*
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 /**
