@@ -6,6 +6,8 @@ plugins {
 	id("io.spring.dependency-management") version "1.1.2"
 	// benchmark용 jmh 플러그인 설치
 	id("me.champeau.jmh") version "0.7.2"
+	// kDoc을 기반으로 문서를 생성하는 dokka 플러그인
+	id("org.jetbrains.dokka") version "1.9.0"
 	kotlin("jvm") version "1.9.21"
 	kotlin("plugin.spring") version "1.9.21"
 	kotlin("plugin.jpa") version "1.9.21"
