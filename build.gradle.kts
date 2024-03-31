@@ -58,9 +58,9 @@ dependencies {
 	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	implementation("io.klogging:klogging-jvm:0.5.6")
-//	testImplementation("io.klogging:klogging-jvm:0.5.6")
+	testImplementation("io.klogging:klogging-jvm:0.5.6")
 	// coroutine 의존성 추가
-	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0-RC")
+	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1-Beta")
 }
 
 tasks.withType<KotlinCompile> {
